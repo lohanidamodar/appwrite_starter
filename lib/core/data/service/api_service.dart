@@ -17,6 +17,7 @@ class ApiService {
     if (_instance == null) {
       _instance = ApiService._internal();
     }
+    return _instance;
   }
 
   Future signup({String name, String email, String password}) async {
@@ -25,5 +26,13 @@ class ApiService {
 
   Future login({String email, String password}) async {
     return account.createSession(email: email, password: password);
+  }
+
+  Future logOut() {
+    return account.deleteSessions();
+  }
+
+  Future getUser() {
+    return account.get();
   }
 }
