@@ -6,11 +6,16 @@ class ApiService {
   final Client client = Client();
   Account account;
   Database db;
+  Avatars avatars;
 
   ApiService._internal() {
-    client.setEndpoint(AppConstants.endpoint).setProject(AppConstants.project);
+    client
+        .setEndpoint(AppConstants.endpoint)
+        .setProject(AppConstants.project)
+        .addHeader('Origin', 'http://localhost');
     account = Account(client);
     db = Database(client);
+    avatars = Avatars(client);
   }
 
   static ApiService get instance {
@@ -34,5 +39,13 @@ class ApiService {
 
   Future getUser() {
     return account.get();
+  }
+
+  Future updatePrefs(Map<String, dynamic> data) {
+    return account.updatePrefs(prefs: data);
+  }
+
+  Future getInitialsAvatar(String name) {
+    return avatars.getInitials(name: name, width: 200);
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:appwrite_starter/features/auth/data/models/user_prefs.dart';
 import 'package:flutter/foundation.dart';
 
 class User {
@@ -9,7 +10,7 @@ class User {
   final int status;
   final String email;
   final bool emailVerification;
-  final Map<String, dynamic> prefs;
+  final UserPrefs prefs;
   User({
     this.id,
     this.name,
@@ -27,7 +28,7 @@ class User {
     int status,
     String email,
     bool emailVerification,
-    Map<String, dynamic> prefs,
+    UserPrefs prefs,
   }) {
     return User(
       id: id ?? this.id,
@@ -48,7 +49,7 @@ class User {
       'status': status,
       'email': email,
       'emailVerification': emailVerification,
-      'prefs': prefs,
+      'prefs': prefs.toMap(),
     };
   }
 
@@ -61,7 +62,7 @@ class User {
       status: map['status'],
       email: map['email'],
       emailVerification: map['emailVerification'],
-      prefs: Map<String, dynamic>.from(map['prefs']),
+      prefs: UserPrefs.fromMap(map['prefs']),
     );
   }
 
@@ -85,7 +86,7 @@ class User {
         other.status == status &&
         other.email == email &&
         other.emailVerification == emailVerification &&
-        mapEquals(other.prefs, prefs);
+        other.prefs == prefs;
   }
 
   @override
