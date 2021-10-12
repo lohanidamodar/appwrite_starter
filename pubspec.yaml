@@ -4,16 +4,16 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2..0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  appwrite: ^0.4.0
-  device_info_plus: ^1.0.0
-  flutter_riverpod: ^0.14.0+1
+  appwrite: ^2.0.2
+  device_info_plus: ^2.1.0
+  flutter_riverpod: ^0.14.0+3
   flutter_svg: ^0.21.0
   flutter_swiper: ^1.1.6
   google_fonts: ^2.0.0
@@ -21,11 +21,7 @@ dependencies:
   intl: ^0.17.0
   package_info_plus: ^1.0.0
 
-dependency_overrides:
-  appwrite:
-    git:
-      url: git@github.com:appwrite/sdk-for-flutter.git
-      ref: feat-null-safety-new
+
 
 dev_dependencies:
   flutter_test:
